@@ -1,0 +1,95 @@
+#!/bin/sh
+(
+while :
+do
+  currentLocation=$(readlink /proc/$PPID/cwd | awk -F '/' '{ print $NF }')
+
+case "$currentLocation" in
+        crashSite )
+		if [[ "${newLocation[0]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ¿¿¿¿¿???? / crashSite /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[0]="1"
+                fi
+        ;;
+
+	Forest )
+		if [[ "${newLocation[1]}" -eq 0 ]]
+		   then
+			sed -i 's/ ?????? / Forest /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+			newLocation[1]="1"
+		fi 	
+	;;
+        twistedForest )
+                if [[ "${newLocation[2]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ¿¿¿¿¿¿¿?????? / twistedForest /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[2]="1"
+                fi
+        ;;
+        overGrownCity )
+                if [[ "${newLocation[3]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ¿¿¿¿?????¿¿¿¿ / overGrownCity /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[3]="1"
+                fi
+        ;;
+        footOfCliff )
+                if [[ "${newLocation[4]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ¿¿¿¿??¿¿¿¿¿ / footOfCliff /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[4]="1"
+                fi
+        ;;
+        Trail )
+                if [[ "${newLocation[5]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ????? / Trail /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[5]="1"
+                fi
+        ;;
+        evacuationZone )
+                if [[ "${newLocation[6]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ¿¿¿¿¿¿¿¿¿¿???? / evactuationzone /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[6]="1"
+                fi
+        ;;
+        deepForest )
+                if [[ "${newLocation[7]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ¿¿¿¿?????? / deepForest /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[7]="1"
+                fi
+        ;;
+        Cave )
+                if [[ "${newLocation[8]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ???? / Cave /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[8]="1"
+                fi
+        ;;
+        tallForest )
+                if [[ "${newLocation[9]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ????¿¿¿¿¿¿ / tallForest /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[9]="1"
+                fi
+        ;;
+        researchCenter )
+                if [[ "${newLocation[10]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ????????¿¿¿¿¿¿ / researchCenter /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[10]="1"
+                fi
+        ;;
+        topOfCliff )
+                if [[ "${newLocation[11]}" -eq 0 ]]
+                   then
+                        sed -i 's/ ¿¿¿??¿¿¿¿¿ / topOfCliff /' ~/L.A.R.K/CORE/mapFiles/map && ~/L.A.R.K/CORE/scripts/./speak "NEW LOCATION ADDED TO MAP"
+                        newLocation[11]="1"
+                fi
+        ;;
+esac
+done
+)
