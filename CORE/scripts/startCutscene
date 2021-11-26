@@ -1,0 +1,138 @@
+#!/bin/bash
+clear
+tput civis
+echo
+echo
+echo
+sleep 3
+echo  "After a routine space mapping expedition in the year 64209, you follow your squad of solo ships in the 10th position as your commander leads your team back to the mothership."
+sleep 7
+echo  "The mission commenced without error, adding an additional 1.39% of the universes's latest expansion to L.I.N.U.X Expedition's coordinate map of the known universe."
+sleep 7
+echo  "Suddenly, your virtual assistant, LaCo, alers you of the transmission of a weak signal."
+
+echo
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "$userName, I’ve detected an incoming signal. It appears to have originated from sector 14. Would you like me to interpret its contents?"
+sleep 7
+tput bold ; echo -n "YOU: "; tput sgr0; echo "Go ahead. Have the other received it as well?"
+sleep 5
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "No, my counterparts are not reporting receiving it. Interpreting... One moment please."
+sleep 2
+echo
+sleep 2
+echo
+sleep 2
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "It appears to be a distress signal from a nearby planet. Most of it has eroded, so I’m unsure of the remainder of its contents."
+sleep 7
+tput bold ; echo -n "YOU: "; tput sgr0; echo "Eroded? That's odd.. From which sector?"
+sleep 4
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "Sector 14X. Would you like to forward it to the commander?"
+sleep 5
+tput bold ; echo -n "YOU: "; tput sgr0; echo "Yes."
+sleep 2
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "Copy that. One moment please."
+sleep 2
+echo
+sleep 2
+echo
+sleep 2
+tput bold ; echo -n "Commander Navarro: "; tput sgr0; echo "Private 0721, I received your message."
+sleep 5
+echo "Team, we received a distress signal from an unmarked planet. It appears to have originated from Sector 14X, but 14X is underexplored and has no known planets."
+sleep 7
+echo "I’m working on pinpointing its exact place of origin. As soon as I get coordinates I’ll redirect course and we’ll ensure no one is in danger. Private 0726, continue course to the mothership and await my instructions."
+sleep 10
+echo "I’ve alerted Space Command of your arrival. If you do not receive a transmission within 5 DAYS, lead the recovery team to our coordinates."
+sleep 7
+tput bold ; echo -n "Private 0726: "; tput sgr0; echo "Yes, commander."
+sleep 3
+tput bold ; echo -n "Commander Navarro: "; tput sgr0; echo "I’m forwarding the coordinates of our detour to the rest of you. Prepare for fast travel."
+sleep 7
+echo
+echo "You deactivate autopilot and prepare to navigate the new territory. On Commander Navarro’s queue, the squad redirects their paths to toward the origin of the signal."
+sleep 10
+echo "After several hours of fast-travel, your squad approaches a ringed planet emitting a blue-greenish hue."
+sleep 7
+echo
+
+cat ~/L.A.R.K/CORE/asciiArt/openingImage
+
+sleep 5
+tput bold ; echo -n "Commander Navarro: "; tput sgr0; echo "This planet appears to be where the signal came from. There were no responses to my radio transmissions to it. Be careful upon approach--it’s not on our maps."
+sleep 10
+echo
+echo "The team slowly approaches the planet’s rings. Suddenly, LaCo displays a warning message across your panel."
+sleep 7
+echo
+tput setaf 1; echo "	WARNING!!! "
+echo
+sleep 2
+echo "	UNKNOWN MOLECULAR INTERFERENCE DETECTED"
+echo
+sleep 2
+echo "	UNKNOWN SYSTEM HAS TAGGED YOUR LOCATION"
+echo
+sleep 2
+echo "	ABORT MISSION NOW"
+tput sgr0;
+echo
+sleep 3
+tput bold ; echo -n "Commnder Navarro: "; tput sgr0; echo "FALL BACK!! WE'RE BEING TARGETTED! FALL B--"
+sleep 4
+echo
+echo "The commander’s radio cuts out."
+sleep 3
+echo "You try to steer away from the planet, but you have no control over your panel. The warning message continues to flash across your screen. "
+sleep 7
+echo "Warped audio from your teammates fighting to control their ships echoes through your cabin. Suddenly, your panel displays a myriad of useless, garbled characters."
+echo
+sleep 7
+echo "A blinding disk of white light ejects from all sides of the planet. It slices through your commander’s ship in first position, sending its exploded debris hurdling backwards toward the rest of the team."
+sleep 10
+echo "The light beam continues toward you, sending each of your team mates to the same fate. Debris crashes into your ship from all sides as the white light envelopes you."
+sleep 7
+for (( count=0; count<=20; count+=1 ))
+do
+tput setab 7; 
+echo "
+
+
+"
+sleep .01
+done
+tput sgr0; tput setab 9;
+sleep 3
+clear
+echo "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		 											The Universe Falls Quiet"
+sleep 3
+clear
+echo "
+
+
+
+
+
+
+
+"
+cat ~/L.A.R.K/CORE/asciiArt/titleArt
+sleep 7
+tput cnorm
