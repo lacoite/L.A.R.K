@@ -1,0 +1,67 @@
+#!/bin/bash
+sleep 2
+tput bold ; echo "YOU: "; tput sgr0;
+REPLY="X"
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Where are we..? What happened?
+	2. What do I do..?
+	3. Can you help me?
+	0. Alright, I think I've got it.
+EOF
+echo
+read -p " " selection
+case $selection in
+	1) tput bold ; echo -n "YOU: "; tput sgr0; echo "Where are we..? What happened?"
+	sleep 3
+	tput bold ; echo -n "LaCo: "; tput sgr0; echo "It looks like we activated some sort of defese system built into the planet."
+	sleep 5
+	echo "I can't access my counterparts... There are no vital readins from any of the squad..."
+	sleep 5
+	echo "It looks like you're the only one who survived the attack. The debris must have knocked us just out of the direct path of the beam. Your vitals appear to be stabilizing, no indication of any concussion or serious injury.
+"
+	sleep 15
+	;;
+	2) tput bold ; echo -n "YOU: "; tput sgr0; echo "What do I do..?"
+	sleep 3
+	tput bold ; echo -n "LaCo: "; tput sgr0; echo "Private 0726 will send a rescue team to us in 5 DAYS."
+	sleep 5
+	echo "Until then, you'll need to survive and find a way to warn the rescue team of teh defense system. If you can get to high ground, I might be able to fast stream a signal before they arrive.
+"
+	sleep 10
+	;;
+	3) tput bold ; echo -n "YOU: "; tput sgr0; echo "Can you help me?"
+	sleep 3
+	tput bold ; echo -n "LaCo: "; tput sgr0; echo "I'll do everything I can to help you survive until the rescue team arrives."
+	sleep 5
+	echo "I'm picking up bits of ancient data scrambled in the planet's atmosphere. Here's what I've collected so far:
+"
+	sleep 7
+	echo -n  "
+Type "; tput bold; echo -n  "ls"; tput sgr0; echo -n " to look around. This will show you anything in your immediate area.
+New locations will be "; tput setaf 4; echo -n "BLUE"; tput sgr0; echo -n ". These are called directories.
+To move to the location, type "; tput bold; echo -n "cd "; tput sgr0; echo -n "followed by the name of the directory. Ex: 'cd ship'
+"
+	sleep 1
+	echo -n  "
+Anything that you can interact with will be "; tput setaf 2; echo -n  "LIGHT GREEN"; tput sgr0; echo -n " and begings with a '~'.
+These are called scripts. Type "; tput bold; echo -n ". "; tput sgr0; echo -n "followed by the name of the script to interact with it. Ex: '. computer'
+"
+	sleep 1
+	echo -n "
+Objects that you can pick up will be the defautl color og your text. These are called files. Type "; tput bold; echo -n "cat "; tput sgr0; echo -n "followed by the file to get a better look at it. Ex. 'cat food'
+
+"
+	tput cnorm
+	sleep 8
+	;;
+	0)tput bold ; echo -n "YOU: "; tput sgr0; echo "Alright, I think I've got it."
+	sleep 3
+	tput bold ; echo -n "LaCo: "; tput sgr0; echo "My builtin functions allow you to talk to me just by saying my name "; tput bold; echo -n "LaCo "; tput sgr0; echo -n "If you ever need help or need to see these commands again.
+I've mapped out a few areas that might be important. I'll update it as you discover new locations. To view the map, call the map function byt typing "; tput bold; echo -n "Map"; tput sgr0; echo ". Good luck, NAME."
+	sleep 10
+	break
+	;;
+esac
+done
+

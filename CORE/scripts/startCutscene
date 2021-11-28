@@ -12,7 +12,7 @@ sleep 7
 echo  "Suddenly, your virtual assistant, LaCo, alers you of the transmission of a weak signal."
 
 echo
-tput bold ; echo -n "LaCo: "; tput sgr0; echo "$userName, I’ve detected an incoming signal. It appears to have originated from sector 14. Would you like me to interpret its contents?"
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "$playerName, I’ve detected an incoming signal. It appears to have originated from sector 14. Would you like me to interpret its contents?"
 sleep 7
 tput bold ; echo -n "YOU: "; tput sgr0; echo "Go ahead. Have the other received it as well?"
 sleep 5
@@ -55,7 +55,12 @@ echo "After several hours of fast-travel, your squad approaches a ringed planet 
 sleep 7
 echo
 
+if [ $(tput cols) -ge 200 ]
+then
+cat ~/L.A.R.K/CORE/asciiArt/openingImageX
+else
 cat ~/L.A.R.K/CORE/asciiArt/openingImage
+fi
 
 sleep 5
 tput bold ; echo -n "Commander Navarro: "; tput sgr0; echo "This planet appears to be where the signal came from. There were no responses to my radio transmissions to it. Be careful upon approach--it’s not on our maps."
@@ -70,7 +75,7 @@ sleep 2
 echo "	UNKNOWN MOLECULAR INTERFERENCE DETECTED"
 echo
 sleep 2
-echo "	UNKNOWN SYSTEM HAS TAGGED YOUR LOCATION"
+echo "	UNIDENTIFIED SYSTEM HAS TAGGED YOUR LOCATION"
 echo
 sleep 2
 echo "	ABORT MISSION NOW"
@@ -124,6 +129,7 @@ echo "
 		 											The Universe Falls Quiet"
 sleep 3
 clear
+sleep 2
 echo "
 
 
