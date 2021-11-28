@@ -1,2 +1,11 @@
 #!/bin/bash
+PS1="[ Day 0 | Hunger [   ] | \W ]$ "
+cd ~/L.A.R.K/GAME/Beach
+sleep 3
+echo "You awaken to the sound of waves crashing around you and a fire crackling nearby. Gentle rushes of water disperse around your feet as you pick yourself up from the course sand."
+sleep 8
+tput bold ; echo -n "YOU: "; tput sgr0; echo "LaCo?"
+sleep 1
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "I'm here."
+. LaCoTutorial
 
