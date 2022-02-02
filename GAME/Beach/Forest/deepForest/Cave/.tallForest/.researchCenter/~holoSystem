@@ -1,0 +1,258 @@
+#!/bin/bash
+clear
+echo "A series of holographic screens flicker to life. A strange text displays across the largest screen."
+sleep 4;
+
+cat $FILELOCATION/CORE/asciiArt/PL
+
+sleep 4;
+echo
+tput bold; echo -n "LaCo: "; tput sgr0; echo "This looks like the planet's main research center. The message translates to \"Planet Lark\"."
+sleep 6;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "We might be able to access important files here."
+sleep 5;
+
+. .authentication
+echo
+if [[ "$USERX" != "Authorized" ]]
+then
+	if [[ "$USERX" = "Unauthorized" ]]
+	then
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "Make sure to enter your ID correctly. Double check the hidden file for the right number as well."
+		sleep 4;
+	else
+		sleep 2
+        	tput bold; echo -n "LaCo: "; tput sgr0; echo "It looks like the authentication system has eroded and is causing errors. We should be able to fix it and add you to the system."
+		sleep 6
+        	tput bold; echo -n "LaCo: "; tput sgr0; echo "There's a hidden file called \".authentication\" on the system. Use the system's vim editor to open it by typing \"vim .authentication\"."
+		echoedVim="yes"
+		if [[ $echoedVim != "yes" ]]
+		then
+			echo "vim
+	--> used to edit files and scripts (do not edit any files other than .authentication and .deactivate)
+		ex. vim .authentication
+" >> $FILELOCATION/CORE/scripts/commandList
+		fi
+	fi
+else
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Communication Files
+	2. Planet Data
+	3. System Defense
+	4. END_FIle.holo
+	0. Exit
+EOF
+read -p "" selection
+	case $selection in
+	1)
+	sleep 2
+        tput bold; echo -n "LaCo: "; tput sgr0; echo "I've downloaded the latest language database for the planet. You can now translate the Holo Scrolls you collected by adding \" | tr \\!\\@\#\\$\\%\\^\\&\\* aeiou \" after the file name when you use the cat command!"
+	sleep 10
+	if [[ -f .LaCo ]]
+	then 
+		mv .LaCo LaCo
+		echo "tr
+	--> this command can be piped to the end of a cat command to translate the holo scrolls. The decryption key is: \\!\\@\#\\$\\%\\^\\&\\* aeioustr
+		ex. cat \$inventory/+scrollOne | tr \\!\\@\#\\$\\%\\^\\&\\* aeioustr
+" >> $FILELOCATION/CORE/scripts/commandList
+	fi
+	;;
+	2) echo "Loading Data..."
+	sleep 3
+	echo "Current Living Population: 0
+Highest Population: 335369
+evacuationZone: established
+Population Aboard Evac Shuttle: 1,000
+Evac Shuttle Destination: N/A
+ "
+	sleep 8;
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "The evacuationZone looks like it was used as a launch base. The rescue team can probably land there once we deactivate the defense system."
+	sleep 7;
+ 	if [[ -d $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone ]]
+        then
+                mv $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/evacuationZone
+        fi
+	;;
+	3) echo "System Defense:"
+	. .deactivate > /dev/null 2&>1
+	sleep 3
+	if [[ "$INACTIVE_DEFENSE" = "evacuationZone" ]]
+		then
+		echo "Inactive: Evacuation Zone"
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "Nice job editing that file! The evacuation zone is now a safe spot for the rescue team to land!"
+		sleep 6;
+		flarePerm="yes"
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "Let's create the warning signal to send to the rescue team. Exit the Holo System then use the touch command to create the file \"RTWarning\". (Type: touch \$inventory/RTWarning)"
+		sleep 8;
+echo "touch
+	--> used to create files
+		ex. touch RTWarning
+" >> $FILELOCATION/CORE/scripts/commandList
+                tput bold; echo -n "LaCo: "; tput sgr0; echo "Then use the echo command with the >> operator to append your string to the file! (Type: echo \"insert text\" >> \$inventory/RTWarning )"
+		sleep 7;
+echo "echo
+	--> used to add content to a file. Use the >> operator to add to a file or the > operator to overwrite a file
+		ex. echo \"Warning message\" >> \$inventory/RTWarning
+" >> $FILELOCATION/CORE/scripts/commandList
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "Be sure to include information about the \"defense system\" and the \"flare\"."
+		sleep 6;
+	else
+		echo "	Active All Locations"
+	        tput bold; echo -n "LaCo: "; tput sgr0; echo "We might be able to edit the variables in the deactivate script. Let's use the system's vim editor."
+		sleep 5;
+	        tput bold; echo -n "LaCo: "; tput sgr0; echo "Exit from the Holo System and use the vim command on the \".deactivate\" script."
+		sleep 6;
+	fi
+	;;
+	4)
+	clear
+	echo "A holograph of a strange, human-like figure emerges from the screen. It pauses for a moment, then speaks:
+
+ "
+	sleep 4
+	echo "If there is anyone out there who may some day see this message..."
+	sleep 5;
+	echo "Let our failure be a story to guide all who are left away from our path."
+	sleep 4;
+	echo "My name is not important. I wish not for it to be slandered through the remainder of history, however long it is that you have left."
+	sleep 5;
+	echo "The important thing is, I led the research that determined the presence of an impending intergalactic event that would collectively end life in our universe as we know it."
+	sleep 6;
+ 	echo "We were certain of this discovery. That's where our fault lay. In our mix of arrogance for having been the first to discover it and the sheer panic to save those we could, we released a warning signal to the depths of the universe and shared our findings with our own people."
+	sleep 10;
+	echo "Chaos ensued."
+	sleep 3;
+	echo "Our peaceful planet, isolated from the viscious ways of outsiders, fell to the depths of hell."
+	sleep 4;
+	echo "Mass suicides. Mass murders. People destroying everything, stealing, killing their children to spare their souls..."
+	sleep 5;
+	echo "In an effort to calm the insanity we announced that we found a location that would be untouched by the event and hoarded people to the evacuation zone."
+	sleep 7;
+	echo "There was never a safe space. The shuttle was flown into a nearby star, killing all who were on it."
+	sleep 5;
+	echo "There were mostly... children on it."
+	sleep 6;
+	echo "There's a cave between the forest. Down one tunnel is a pit that drops several thousand feet."
+	sleep 6;
+	echo "I encouraged those trapped on the planet to take control of their fates and...."
+	sleep 5;
+	echo "Well... Our numbers dwindled. Those who refused were taken there by force."
+	sleep 5;
+	echo "No one could live to see what I had done."
+	sleep 4;
+	echo "We had a countdown. An exact day and time."
+	sleep 4;
+	echo "But shortly after our first announcement I realized an error in our calculations. Our predictions were some 10,000 years too early. It would not occur until the year 64209."
+	sleep 7;
+	echo "But it was too late. I had already caused the demise of my planet and soon the rest of the universe would blindly follow."
+	sleep 7;
+	echo "I was the last person alive here. A planet once brimming with life lay hauntingly quiet as I recorded this."
+	sleep 5;
+	echo "By the time you anyone sees this, we will all have been long dead. I joined my people in the cave after this. Perhaps this message will be lost to the end before anyone gets to see it."
+	sleep 10;
+	echo "That is my hope. I cannot bare knowing that it will reach the populated ends of the universe before then."
+	sleep 7;
+	echo "If our warning is responsible for your presence here, please..."
+	sleep 6;
+	echo "Do not make the mistakes we have. The end is inevitable, but knowing not when it is keeps peace among this universe's inhabitants."
+	sleep 9;
+	echo "
+The message ends and the figure disappears. For a moment, you stand in silence."
+        sleep 7
+	echo
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "64209... Is this year. The signal must have been boucing around in space for thousands of years..."
+	sleep 10
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "Maybe their calculations were incorrect. There's no record of such an event in any database from L.I.N.U.X Expeditions. We should get moving."
+	sleep 7;
+	caveWarning="yes"
+	fullStory="unlocked"
+	;;
+	0)
+	break
+	;;
+	esac
+done
+fi
+rm 1 2>/dev/null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~holoSystem is a script, use the source command to interact with it: . ~holoSystem
+# use the function "LaCo" to view your commands if you need help
+	

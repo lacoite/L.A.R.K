@@ -14,9 +14,9 @@ read -p " " selection
 case $selection in
 	1) tput bold ; echo -n "YOU: "; tput sgr0; echo "Where are we..? What happened?"
 	sleep 3
-	tput bold ; echo -n "LaCo: "; tput sgr0; echo "It looks like we activated some sort of defese system built into the planet."
+	tput bold ; echo -n "LaCo: "; tput sgr0; echo "It looks like we activated some sort of defense system built into the planet."
 	sleep 5
-	echo "I can't access my counterparts... There are no vital readins from any of the squad..."
+	echo "I can't access my counterparts... There are no vital readings from any of the squad..."
 	sleep 5
 	echo "It looks like you're the only one who survived the attack. The debris must have knocked us just out of the direct path of the beam. Your vitals appear to be stabilizing, no indication of any concussion or serious injury.
 "
@@ -26,7 +26,7 @@ case $selection in
 	sleep 3
 	tput bold ; echo -n "LaCo: "; tput sgr0; echo "Private 0726 will send a rescue team to us in 5 DAYS."
 	sleep 5
-	echo "Until then, you'll need to survive and find a way to warn the rescue team of teh defense system. If you can get to high ground, I might be able to fast stream a signal before they arrive.
+	echo "Until then, you'll need to survive and find a way to warn the rescue team of the defense system. If you can get to high ground, I might be able to fast stream a signal before they arrive.
 "
 	sleep 10
 	;;
@@ -39,17 +39,16 @@ case $selection in
 	sleep 7
 	echo -n  "
 Type "; tput bold; echo -n  "ls"; tput sgr0; echo -n " to look around. This will show you anything in your immediate area.
-New locations will be "; tput setaf 4; echo -n "BLUE"; tput sgr0; echo -n ". These are called directories.
-To move to the location, type "; tput bold; echo -n "cd "; tput sgr0; echo -n "followed by the name of the directory. Ex: 'cd ship'
+New locations will be "; printf "\x1b[38;2;85;85;255mBlue\x1b[0m"; echo -n ". These are called directories.
 "
 	sleep 1
 	echo -n  "
-Anything that you can interact with will be "; tput setaf 2; echo -n  "LIGHT GREEN"; tput sgr0; echo -n " and begings with a '~'.
-These are called scripts. Type "; tput bold; echo -n ". "; tput sgr0; echo -n "followed by the name of the script to interact with it. Ex: '. computer'
+Anything that you can interact with will be"; printf "\x1b[38;2;85;255;85m Light Green\x1b[0m"; echo -n " and begins with a '~'.
+These are called scripts.
 "
 	sleep 1
 	echo -n "
-Objects that you can pick up will be the defautl color og your text. These are called files. Type "; tput bold; echo -n "cat "; tput sgr0; echo -n "followed by the file to get a better look at it. Ex. 'cat food'
+Objects that you can look at will be the default color of your text. These are called files. Type "; tput bold; echo -n "cat "; tput sgr0; echo -n "followed by the file to get a better look at it. Ex. 'cat food'
 
 "
 	tput cnorm
@@ -57,11 +56,26 @@ Objects that you can pick up will be the defautl color og your text. These are c
 	;;
 	0)tput bold ; echo -n "YOU: "; tput sgr0; echo "Alright, I think I've got it."
 	sleep 3
-	tput bold ; echo -n "LaCo: "; tput sgr0; echo "My builtin functions allow you to talk to me just by saying my name "; tput bold; echo -n "LaCo "; tput sgr0; echo -n "If you ever need help or need to see these commands again.
-I've mapped out a few areas that might be important. I'll update it as you discover new locations. To view the map, call the map function byt typing "; tput bold; echo -n "Map"; tput sgr0; echo ". Good luck, NAME."
-	sleep 10
+	 tput bold ; echo -n "LaCo: "; tput sgr0; echo -n " I've mapped out a few areas that might be important. I'll update it as you discover new locations. To view the map, call the map function by typing "; tput bold; echo -n "Map"; tput sgr0; echo ". And just one more thing."
+sleep 10
+echo -n "[ Day 0 | Hunger [   ] | Beach ]$ 
+     ^ This is your day tracker. It'll let you know how many days have passed. You'll need to use the function "; tput bold; echo -n "rest "; tput sgr0; echo -n "to sleep and skip to the next day.
+"
+sleep 7
+echo -n "[ Day 0 | Hunger [   ] | Beach ]$
+	   ^ Be careful though, you'll need to eat at least once a day to survive. If you don't eat for two days, you'll starve to death. Food can be collected as you explore.
+"
+sleep 10
+echo "[ Day 0 | Hunger [   ] | Beach ]$
+			  ^ This is your current location.
+"
+sleep 3
+echo -n "The first day will be difficult, so I'll be with you every step of the way. Whenever I have information for you, you'll see my name when you look around. Type 'cat LaCo' to read my file! Type ls to get started. Good luck!" 
+echo "
+"
+	sleep 15	
 	break
 	;;
 esac
 done
-
+clear

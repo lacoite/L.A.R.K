@@ -1,0 +1,79 @@
+#!/bin/bash
+clear
+sleep 3;
+echo "You wait near the flare for what feels like an eternity."
+sleep 4
+echo "Finally, a low rumble echoes across the sky."
+sleep 3;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "The rescue team has arrived!"
+sleep 4;
+echo "The clouds in the sky part, giving way to a large rescue craft branded \"L.I.N.U.X\" on the side. A wave of both disbelief, excitement, and exhaustion rushes through your body, sending you to your knees."
+sleep 8;
+echo "Three members of the rescue team uniformly hurry over to you, immediately administering first aid to your limp body."
+sleep 7;
+if [[ "$fullStory" = "unlocked" ]]
+then
+echo "They bombard you with questions to which you simply shake or nod your head as you fade from conciousness."
+sleep 8;
+clear
+sleep 3;
+echo "After a long ride back to the mothership, you find yourself standing infront of the Space Command council, relaying the story of the attack and your lone survival on Planet Lark."
+sleep 8;
+tput bold; echo -n "Council Member: "; tput sgr0; echo "Planet Lark of Sector 14X... Such a strange story. And what of its inhabitants? Did you determine the cause of their sudden extinction?"
+sleep 7;
+echo "
+You pause for a moment, thinking back to the holo video that you watched."
+sleep 5
+echo "If their predictions were right, the end of the universe would occur at any moment. Surely it would be wise to tell the council."
+sleep 8
+echo "But the chaos that would unfold if word got out... It would be Planet Lark on a universal scale..."
+sleep 9
+echo "And if the prediction is wrong you would be responsible for irreparable damage..."
+sleep 7
+echo "You think for a moment before making a decision."
+sleep 5;
+while [[ "$REPLY" -ne 1 ]] && [[ "$REPLY" -ne 2 ]]
+do
+	cat <<EOF
+	1. I did.
+	2. No, I never found out.
+EOF
+	read -p "" selection
+	case $selection in
+		1) echo "You wouldn't be able to keep something so important to yourself. You tell the council everything."
+		sleep 5
+		echo "Regardless of whether the prediction was right or wrong, you pray you've made the right decision."
+		sleep 5;
+		clear
+		cat $FILELOCATION/CORE/asciiArt/titleArt
+		echo "									End."
+		sleep 6
+		clear
+		gameDeath
+		;;
+		2) echo "You fight every urge to tell the council everything."
+		sleep 4
+		echo "If the universe is ending, there's nothing anyone can do about it anyway... right?"
+		sleep 7
+		echo "It's best to let whatever happens happen..."
+		sleep 4
+		clear
+		cat $FILELOCATION/CORE/asciiArt/titleArt
+                echo "                                                                  End."
+                sleep 6
+		clear
+		gameDeath
+		;;
+		*)
+		;;
+	esac
+done
+else
+echo "As you're piloted to the safety of the mothership, you wonder what really happened on Planet Lark and why that signal lead you there."
+sleep 8;
+cat $FILELOCATION/CORE/asciiArt/titleArt
+echo "                                                                  End."
+sleep 6
+clear
+gameDeath
+fi

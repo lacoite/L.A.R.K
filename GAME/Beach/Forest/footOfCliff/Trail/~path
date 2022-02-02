@@ -1,0 +1,123 @@
+#!/bin/bash
+clear
+echo "Past the cliffside beach you wander through another forest until you reach a more open area with grass nearly as tall as you are. The grass is divided, creating a trail. It continues for several miles, winding over the hills, then suddenly ends."
+sleep 10;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "This trail must have been walked a lot for it to still not have any growth."
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Explore Strange Hill
+	2. Observe Grass
+	3. Walk Through Grass
+	0. Done
+EOF
+read -p "" selection
+	case $selection in
+	1) echo "Along the trail you find an unusually large bump in the grass a few feet from the growthless path"
+	 sleep 5;
+	echo "The ground sounds rather hollow when you jump on it. You dig through the soil and find the remains of a resting area."
+	sleep 7;
+	echo "You find a holo scroll buried underneath."
+	sleep 4;
+	if [[ -f .+scrollTwo ]]
+	then
+	mv .+scrollTwo \+scrollTwo
+		mv .LaCo LaCo
+	fi
+	;;
+	2) echo "You observe the grass and notice that some of the pieces are different than others. They appear to be an edible plant camouflauged into the regular grass."
+        sleep 7
+        if [[ -f .+grass ]]
+	then
+		mv .+grass \+grass
+	fi
+	;;
+	3) echo "You walk through the grass, blindly searching for the start of another path. The further you walk, the taller the grass gets and the less you can see."
+	sleep 7;
+	echo "You tumble through the grass into a large open patch of some sort of mud. You realize you are quickly sinking. You struggle to pull yourself from the quicksand as the ground swallows you alive."
+	sleep 10
+		echo "	You Died."
+	sleep 3
+	gameDeath
+	break
+	;;
+	0)
+	break
+	;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~path is a script, use the source command to interact with it: . ~path
+# use the function "LaCo" to view your commands if you need help
+	

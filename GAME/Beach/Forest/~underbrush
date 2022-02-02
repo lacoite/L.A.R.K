@@ -1,0 +1,85 @@
+#!/bin/bash
+echo "You observe the thick underbrush on the forest floor. There appears to be a long strip of dirt on the ground where no plants have grown from, but the surrounding plants have sprouted over. It leads to trees that twist and wind into eachother."
+sleep 7;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "This looks like an old pathway, but it hasn't been used in ages. Be careful going this way."
+sleep 3
+if [[ -d .twistedForest ]]
+then
+	mv .twistedForest twistedForest
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~underBrush is a script, use the source command to interact with it: . ~underBrush
+# use the function "LaCo" to view your commands if you need help
+

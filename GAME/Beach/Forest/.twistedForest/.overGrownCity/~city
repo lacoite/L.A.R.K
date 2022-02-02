@@ -1,0 +1,128 @@
+#/bin/bash
+clear
+echo "After crawling through the forest, you find yourself in the remains of an abandoned city. Moss and various plant life have engulfed and torn through the infrastructure."
+sleep 10;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "This city looks like no one has been in it for ages. Some of these structures might not be safe. You should avoid the taller ones incase of a collapse."
+sleep 7;
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Explore Homes
+	2. Explore Tall Buildings
+	3. Explore Train Station
+	0. Done
+EOF
+read -p "" selection
+	case $selection in
+	1) echo "You make your way to the remains of a neighborhood. You rummage through the houses, searching for anything that could be useful."
+	 sleep 7;
+	echo "Many of them have various masses of decomposed material that may have once been furniture. Some houses have the largest of their masses piled infront of what used to be entrances. It's as if some inhabitants suddenly left while others tried to keep something out."
+	sleep 10;
+	echo "In one of the larger houses, you find a holo scroll encased in a broken safe."
+	if [[ -f .+scrollOne ]]
+	then
+		mv .+scrollOne \+scrollOne
+		mv .LaCo LaCo
+	fi
+	;;
+	2) echo "You ignore LaCo's warning and proceed into a tall office-like building."
+	sleep 4;
+	echo "You continue up through the building, admiring the remains of the ancient technology. Suddenly the ground beneath you drops, and you freefall several stories to the ground. The rest of the building followed your path, killing you immediately."
+	sleep 10
+		echo "	You Died."
+	sleep 3
+	gameDeath
+	break
+	;;
+	3) echo "You find yourself at a train station. The train cars have become flowerpots for massive, spindly plants exploding through the ceiling of the structure."
+	sleep 7
+	echo "There is a large map, largely untouched but thr growths, with a strange word scribbled over an area."
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "It translates roughly to EVACUATION ZONE. We should find out where that is." 
+	if [[ -d $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone ]]
+	then 
+		mv $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/evacuationZone
+	fi
+	;;
+	0)
+	break
+	;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~city is a script, use the source command to interact with it: . ~city
+# use the function "LaCo" to view your commands if you need help
+	

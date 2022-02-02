@@ -1,0 +1,24 @@
+
+	COMMANDS
+(Press q to exit)
+=================================
+quit
+	--> this function is used to exit the game.
+rest
+	--> this function is used to sleep until the next day in the game (you will need to be on Day 5 to win the game)
+
+ls 
+	--> used to display files, scripts, and directories to "look around"
+	--> can also be used to open inventory: ls $inventory
+cd <pathname>
+	--> used to move to a new directory or "location"
+		ex. cd ~crashSite
+cd ..
+	--> used to move back to the last directory or "location"
+Map
+	--> this function dusplays the map
+BACK
+	-->this function returns you to the start of the game (USE IF YOU cd BEYOND GAME MAP)
+cat <filename>
+	--> used to display content of a file
+		ex. cat LaCo

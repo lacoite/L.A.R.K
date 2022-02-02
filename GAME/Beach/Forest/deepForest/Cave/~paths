@@ -1,0 +1,136 @@
+#!/bin/bash
+clear
+echo "The cave splits into two dark paths."
+sleep 3
+if [[ ! -f $FILELOCATION/CORE/inventory/+flashlight ]]
+then
+	echo "It might be dangerous to explore without a flashlight."
+	sleep 4
+fi
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+
+        1. Left Path
+        2. Right Path
+        0. Back
+EOF
+
+read -p "" selection
+case $selection in
+	1) echo -n "You follow the left path of the cave. The air becomes moist, and you see light at the end of the tunnel. A tall forest lays at the end."
+	sleep 3
+	if [[ -d .tallForest ]]
+		then
+		mv .tallForest tallForest 
+	fi
+	;;
+	2) if [[ ! -f $FILELOCATION/CORE/inventory/+flashlight ]] && [[ "$caveWarning" != "yes" ]]
+		then
+ 		echo "You follow the right path of the cave. The ground beneath you disappears and you violently tumble down a deep, dark hole before freefalling for several seconds. You are paralyzed in pain, only able to move your arms enough to activate your wrist band. The dim light from your wrist band only grants you a enough vision to see what your damaged body landed on."
+		sleep 10;
+		echo "Your stomach drops when you realize you are the latest addition to a colossal pile of moist, largely decomposed bodies."
+		sleep 7;
+		echo "You find a holo-scroll with a text translated in a thousand languages. It reads:
+
+I am the last to go. Should this ever be read, know that we were wrong. Our predictions were too early, but it was too late to stop the chaos. We are sorry... I am sorry.
+"
+		sleep 10;
+		echo "You lay in silence, wondering what the note could have possibly meant. Finally, you decide that it doesn't matter as you become another decomposed body in the pile."
+		sleep 8;
+		clear
+		echo "  You Died."
+	        sleep 3
+		gameDeath
+        	break
+	elif [[ "$caveWarning" = "yes" ]]
+	then
+		echo "This way must be the path to the pit... You're not interested in going there."
+		sleep 5
+	else
+        	echo "You carefully follow the path, shining your flashlight about. The claw marks seem to get more aggressive and amplify in number the farther you go down the path. The ground suddenly ends, leading to a massive pit. You shine your light down it and realize it drops down hundreds of feet. You can't see the bottom, but it smells like something died and decomposed a thousand times over."
+        sleep 10;
+	fi
+	;;
+	0)
+	break
+	;;
+esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~paths is a script, use the source command to interact with it: . ~paths
+# use the function "LaCo" to view your commands if you need help
+

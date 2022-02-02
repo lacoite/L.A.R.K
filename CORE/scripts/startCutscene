@@ -9,12 +9,12 @@ echo  "After a routine space mapping expedition in the year 64209, you follow yo
 sleep 7
 echo  "The mission commenced without error, adding an additional 1.39% of the universes's latest expansion to L.I.N.U.X Expedition's coordinate map of the known universe."
 sleep 7
-echo  "Suddenly, your virtual assistant, LaCo, alers you of the transmission of a weak signal."
+echo  "Suddenly, your virtual assistant, LaCo, alerts you of the transmission of a weak signal."
 
 echo
-tput bold ; echo -n "LaCo: "; tput sgr0; echo "$playerName, I’ve detected an incoming signal. It appears to have originated from sector 14. Would you like me to interpret its contents?"
+tput bold ; echo -n "LaCo: "; tput sgr0; echo "I’ve detected an incoming signal. Would you like me to interpret its contents?"
 sleep 7
-tput bold ; echo -n "YOU: "; tput sgr0; echo "Go ahead. Have the other received it as well?"
+tput bold ; echo -n "YOU: "; tput sgr0; echo "Go ahead. Have the others received it as well?"
 sleep 5
 tput bold ; echo -n "LaCo: "; tput sgr0; echo "No, my counterparts are not reporting receiving it. Interpreting... One moment please."
 sleep 2
@@ -57,9 +57,9 @@ echo
 
 if [ $(tput cols) -ge 200 ]
 then
-cat ~/L.A.R.K/CORE/asciiArt/openingImageX
+cat $FILELOCATION/CORE/asciiArt/openingImageX
 else
-cat ~/L.A.R.K/CORE/asciiArt/openingImage
+cat $FILELOCATION/CORE/asciiArt/openingImage
 fi
 
 sleep 5
@@ -95,7 +95,7 @@ sleep 7
 echo "A blinding disk of white light ejects from all sides of the planet. It slices through your commander’s ship in first position, sending its exploded debris hurdling backwards toward the rest of the team."
 sleep 10
 echo "The light beam continues toward you, sending each of your team mates to the same fate. Debris crashes into your ship from all sides as the white light envelopes you."
-sleep 7
+sleep 10
 for (( count=0; count<=20; count+=1 ))
 do
 tput setab 7; 
@@ -139,6 +139,8 @@ echo "
 
 
 "
-cat ~/L.A.R.K/CORE/asciiArt/titleArt
+cat $FILELOCATION/CORE/asciiArt/titleArt
 sleep 7
 tput cnorm
+
+. start

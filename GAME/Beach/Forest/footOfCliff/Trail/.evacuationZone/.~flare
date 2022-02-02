@@ -1,0 +1,141 @@
+#!/bin/bash
+if [[ $"flareSent" = "yes" ]]
+then
+	echo "You've already sent the flare!"
+elif [[ -f $inventory/+flare ]]
+then
+	if [[ "$flarePerm" = "yes" ]]
+	then
+		rm $inventory/+flare
+		echo "You launch the flare next to the landing pad."
+		sleep 5
+		fareSent="yes"
+	else
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "We should make sure it's safe to have the rescue team land here first."
+		sleep 5;
+	fi
+else
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "You didn't pick up the flare at the research center! Head back and use: \"+mv flare \$inventory\""
+fi
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~flare is a script, use the source command to interact with it: . ~flare
+# use the function "LaCo" to view your commands if you need help
+

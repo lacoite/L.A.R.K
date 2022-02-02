@@ -1,0 +1,25 @@
+╔══════╗
+║█    █║
+║  └┘  ║
+╚══════╝: You should see if there is anything salvageable from the crash.
+Interact with the wreckage by using the source command ".". Use this command on anything that is light green and begins with a "~". These are called scripts.
+Things that you can pick up and add to your inventory will be the default color of your text, but will begin with a "+". Add them to your inventory by using the mv command.
+When you're all done, use the command cd .. to go back to the Beach.
+
+Remember that you can just type my name to call my function if you want to see your old commands and information!
+
+
+***NEW COMMANDS:
+. <script name>
+	--> used to interact with scripts (scripts will be green and begin with a ~)
+		ex. . crashedShip
+mv <scriptname> $inventory
+	--> used to move files (objects) to your inventory. "$inventory" is a variable that holds the path to your inventory. ***ONLY MOVE FILES THAT BEGIN WITH A +
+		ex. mv +flashlight $inventory
+	--> OPEN INVENTORY: ls $inventory
+cd ..
+	--> used to go back to the last directory or location
+Map
+	--> this function can be used to view the map
+
+

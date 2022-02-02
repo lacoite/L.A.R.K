@@ -1,0 +1,12 @@
+╔══════╗
+║█    █║
+║  └┘  ║
+╚══════╝: You can now translate the holo scrolls using a pipe and the tr command in addition to the cat command! 
+
+GAME HINT: Remember to use the rest function to skip to the next day (winning the game requires being on DAY 5, skip time wisely)
+
+***NEW COMMAND:
+tr
+	--> pipe to a cat command to replace letters in a file. Decryption key: !@#$%^&* aeioustr
+		ex. cat $inventory/+scrollOne | tr \!\@\#\$\%\^\&\* aeioustr
+

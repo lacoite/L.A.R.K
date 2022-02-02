@@ -1,0 +1,124 @@
+#!/bin/bash
+clear
+echo "You carefully approach the wreckage of your ship. Large chunks of the craft are spread out along the beach."
+sleep 4;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "We should look around to see if any of your equipment survived the crash."
+sleep 4;
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Search Cabin
+	2. Search Near Wings
+	0. Done
+EOF
+read -p "" selection
+	case $selection in
+	1) echo "You find your myDevice and a flashlight."
+	 sleep 3;
+	if [[ -f .+myDevice ]]
+		then
+		  mv .+myDevice \+myDevice
+		  mv .+flashlight \+flashlight
+		  echo ". <script name>
+        --> used to interact with scripts (scripts will be green and begin with a ~)
+                ex. . crashedShip
+mv <scriptname> \$inventory
+        --> used to move files (objects) to your inventory. \"\$inventory\" is a variable that holds the path to your inventory ***ONLY MOVE FILES THAT BEGIN WITH A +
+        --> OPEN INVENTORY: ls \$inventory
+" >> "$FILELOCATION/CORE/scripts/commandList"
+	fi
+	;;
+	2) echo "You shift a piece of metal from the wreckage. Sparks fly as you toss the debris to the side."
+	sleep 4;
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "Please be careful!
+"
+	sleep 2;
+	;;
+	0) break
+	;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~crashedShip is a script, use the source command to interact with it: . ~crashedShip
+# use the function "LaCo" to view your commands if you need help
+
