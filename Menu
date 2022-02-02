@@ -1,22 +1,108 @@
 #!/bin/bash
+
+FILELOCATION=$PWD
+
 function resetVar() {
-	echo "Resetting variables"
 	newLocation=(0 0 0 0 0 0 0 0 0 0 0)
-	cp ~/L.A.R.K/CORE/mapFiles/mapLocked ~/L.A.R.K/CORE/mapFiles/map
-	rm ~/L.A.R.K/CORE/inventory/*
-	#location tracker reset, inventory and map reset
+	cp $FILELOCATION/CORE/mapFiles/mapLocked $FILELOCATION/CORE/mapFiles/map 2>/dev/null
+	rm -r $FILELOCATION/CORE/inventory/ && mkdir $FILELOCATION/CORE/inventory 2>/dev/null
+	cp $FILELOCATION/CORE/reserves/commandListOriginal $FILELOCATION/CORE/scripts/commandList 2>/dev/null
+	Day="0"
+	foodReq="no"
+	daysNoFood="0"
+	playerWin="locked"
+	echoedVim="no"
+	flareSent="no"
+	flarePerm="no"
+	caveWarning="no"
+	killedLizard="no"
+	fullStory="locked"
+	unset USERX
+	unset INACTIVE_DEFENSE
 	}
 
 function configSettings() {
-	export PATH=$PATH:~/L.A.R.K/CORE/scripts
-	Map () { cat $HOME/L.A.R.K/CORE/mapFiles/map; . speak "Your Location: $(pwd | gawk -F '/' '{ print $NF }')"; echo; echo; }
-	LaCo () { echo "Information from LaCo (might do a script that updates)"; }
-	inventory=$HOME/L.A.R.K/CORE/inventory
+	export PATH=$PATH:$FILELOCATION/CORE/scripts
+	function rest () { 
+	if [[ "$Day" -eq 5 ]] && [[ "$playerWin" = "locked" ]] 
+	then
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "The rescue team will arrive today... We've got to make sure that they can land safely."
+		sleep 7
+	elif [[ "$Day" -eq 5 ]] && [[ "$playerWin" = "unlocked" ]]
+	then
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "The rescue team will arrive today! Head to the Evacuation Zone!"
+		sleep 7
+	else
+		if [[ "$foodReq" = "no" ]]
+		then
+			(( daysNoFood+=1 ))
+			if [[ "$daysNoFood" = 2 ]]
+			then
+				clear
+				echo "You starved to death..."
+				sleep 3
+				gameDeath
+			else
+				tput bold; echo -n "LaCo: "; tput sgr0; echo "You didn't eat yesterday. Make sure to eat before you rest tonight-- otherwise you'll starve.";
+				sleep 4
+				(( Day+=1 )); PS1="[ Day $Day ] | Hunger [   ] | \W ]$ "; foodReq="no";
+			fi
+		else
+		(( Day+=1 )); PS1="[ Day $Day ] | Hunger [   ] | \W ]$ "; foodReq="no";
+		fi
+	fi
+	 }
+	Map () { cat $FILELOCATION/CORE/mapFiles/map; . speak "Your Location: $(pwd | gawk -F '/' '{ print $NF }')"; echo; echo; }
+	LaCo () { less "$FILELOCATION/CORE/scripts/commandList"; }
+	BACK () { cd $FILELOCATION/GAME/Beach; }
+	quit () { pkill -f unlockLocation; cd $FILELOCATION; PS1="[\u@\h \W]$ "; }
+	gameDeath () { pkill -f unlockLocation; running="false"; resetVar; moveFiles; cd $FILELOCATION; PS1="[\u@\h \W]$ "; break; }
+	inventory=$FILELOCATION/CORE/inventory
 	playerName=$userName
 	}
 
+function eat () {
+	if [[ "$foodReq" = "no" ]]
+	then
+		if [[ -f $inventory/$1 ]]
+		then
+			if [[ "$1" = "+fruit" ]] || [[ "$1" = "+mushrooms" ]] || [[ "$1" = "+treeSap" ]] || [[ "$1" = "+grass" ]] || [[ "$1" = "+plant" ]]
+			then
+				rm $inventory/$1
+				foodReq="yes"
+				daysNoFood="0"
+				if [[ "$Day" -eq 0 ]] 
+				then
+					PS1="[ Day 0 | Hunger ■■■■ | \W ]$ "
+				elif [[ "$Day" -eq 1 ]]
+				then
+					PS1="[ Day 1 | Hunger ■■■■ | \W ]$ "
+       				elif [[ "$Day" -eq 2 ]]
+     	        		then
+					PS1="[ Day 2 | Hunger ■■■■ | \W ]$ "
+	        		elif [[ "$Day" -eq 3 ]]
+        	       		then
+					PS1="[ Day 3 | Hunger ■■■■ | \W ]$ "
+        			elif [[ "$Day" -eq 4 ]]
+        			then
+				     PS1="[ Day 4 | Hunger ■■■■ | \W ]$ "
+				fi
+			else
+				echo "$1 is not edible!"
+			        sleep 3;
+			fi
+		else
+		echo "You don't have $1 in your inventory. Type ls \$inventory to see what items you are carrying."
+		sleep 5;
+		fi
+	else
+		echo "You've already eaten today..."
+		sleep 2;
+	fi
+	}
+
 function screenSize () { 
-	while [ "$(tput cols)" -lt 175 ]
+	while [[ "$(tput cols)" -lt 175 ]]
 	do
 	echo "Please increase the size of your window to at least 200 columns for images and text to correctly display."
 	echo "Current size: " $(tput cols)
@@ -25,6 +111,59 @@ function screenSize () {
         echo "Screen Size Sufficient, Thank You!"
         }
 
+function moveFiles () {
+cp $FILELOCATION/CORE/mapFiles/mapLocked $FILELOCATION/CORE/mapFiles/map 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Debris 2>/dev/null
+cp $FILELOCATION/CORE/reserves/Debris $FILELOCATION/GAME/Beach/Debris 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+flashlight $FILELOCATION/GAME/Beach/crashSite/.+flashlight 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+myDevice $FILELOCATION/GAME/Beach/crashSite/.+myDevice 2>/dev/null
+rm $FILELOCATION/GAME/Beach/crashSite/+flashlight 2>/dev/null
+rm $FILELOCATION/GAME/Beach/crashSite/+myDevice 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+mushrooms  $FILELOCATION/GAME/Beach/Forest/.+mushrooms 2>/dev/null
+cp $FILELOCATION/CORE/reserves/LaCoForest $FILELOCATION/GAME/Beach/Forest/LaCo 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+axe $FILELOCATION/GAME/Beach/Forest/.+axe 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/+axe 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+fruit $FILELOCATION/GAME/Beach/Forest/.+fruit 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/+fruit 2>/dev/null
+mv $FILELOCATION/GAME/Beach/Forest/twistedForest $FILELOCATION/GAME/Beach/Forest/.twistedForest 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/.twistedForest/+mushrooms 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+mushrooms $FILELOCATION/GAME/Beach/Forest/.twistedForest/.+mushrooms 2>/dev/null
+mv $FILELOCATION/GAME/Beach/Forest/.twistedForest/overGrownCity $FILELOCATION/GAME/Beach/Forest/.twistedForest/.overGrownCity 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+scrollOne $FILELOCATION/GAME/Beach/Forest/.twistedForest/.overGrownCity/.+scrollOne 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.LaCoCity  $FILELOCATION/GAME/Beach/Forest/.twistedForest/.overGrownCity/.LaCo 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/.twistedForest/.overGrownCity/LaCo 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/deepForest/+scrollThree 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/deepForest/+treeSap 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+treeSap $FILELOCATION/GAME/Beach/Forest/deepForest/.+treeSap 2>/dev/null
+cp $FILELOCATION/CORE/reserves/LaCoDF $FILELOCATION/GAME/Beach/Forest/deepForest/LaCo 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+scrollThree $FILELOCATION/GAME/Beach/Forest/deepForest/.+scrollThree 2>/dev/null
+mv $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/tallForest $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+plant $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.+plant 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/deepForest/.tallForest/+plant 2>/dev/null
+mv $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/topOfCliff $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.topOfCliff 2>/dev/null
+mv $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/researchCenter $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.researchCenter 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.authentication  $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.researchCenter/.authentication 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.deactivate $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.researchCenter/.deactivate 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+flare $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.researchCenter/+flare 2>/dev/null
+cp $FILELOCATION/CORE/reserves/LaCoRC $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.researchCenter/.LaCo 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/deepForest/Cave/.tallForest/.researchCenter/LaCo 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+grass $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.+grass 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+scrollTwo $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.+scrollTwo 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.LaCoTrail $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.LaCo 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/footOfCliff/view 2>/dev/null
+cp $FILELOCATION/CORE/reserves/view ~/PlanetLark.LarkGroup/GAME/Beach/Forest/footOfCliff/view 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/LaCo 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/+grass 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/+scrollTwo 2>/dev/null
+mv $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/evacuationZone $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.+scrollFour $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone/.+scrollFour 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.~flare $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone/.~flare 2>/dev/null
+cp $FILELOCATION/CORE/reserves/.~RESCUE $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone/.~RESCUE 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone/+scrollFour 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone/~flare 2>/dev/null
+rm $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/.evacuationZone/~RESCUE 2>/dev/null
+	}
+			
 
 #save screen
 tput smcup
@@ -37,15 +176,14 @@ clear
 	     MAIN MENU
 	═══════════════════
 	1. New Game
-	2. Continue
-	3. Help
+	2. About
 	0. Quit
 
 EOF
 
 read -p "Enter Selection [0-3]: " selection
 	case $selection in
-	1) read -p "Enter Your Name: " userName
+	1)
 		clear
 		cat <<EOF
 	  Skip Cutsene?
@@ -55,14 +193,20 @@ read -p "Enter Selection [0-3]: " selection
 	0. Back
 EOF
 		read -p "Enter Selection [0-2]: " selection2
-		configSettings
+		configSettings	
+		resetVar
+		moveFiles
 		screenSize
 		case $selection2 in
 			1) echo "Starting..."
 			sleep 3
-			 ~/L.A.R.K/CORE/scripts/./startCutscene
+			. startCutscene
+			break
 			;;
-			2) echo "Will skip cutscene and start game)"
+			2) echo "Starting..."
+			sleep 3
+			. start
+			break
 			;;
 			0) tput rmcup
 			;;	
@@ -70,28 +214,19 @@ EOF
 			;;
 		esac
 	;;
-	2) read -p "Enter Your Name: " userName
-		if [ $(gawk '{ print $1}' ./currentPlayer.dat) = $userName ]
-			then
-				echo "Welcome back $userName"
-				configSettings
-				screenSize
-				sleep 2
-				#INSERT SCRIPT TO LOAD SAVE FILE
-		else
-			echo "No Save File Found"
-			tput rmcup
-		fi
+	2)clear 
+echo "Planet Lark is a terminal based game intended to teach players basic commands to navigate and utilize the bash shell.
+To start the game, select option 1. Once the game has started, the goal is to survive navigating through the world map, uncovering the planet's story and making choices to determine which ending you reach. Type \"LaCo\" while in the game to view the commands you have unlocked.
+
+Follow the instructions in the game to avoid altering any game codes. If you would like to exit the game at any point, type \"quit\" on the command line. You will need to start a new game afterwards."
+	sleep 20;  
 	;;
-	3) echo "Will insert game info and break trap.."
-	;;
-	0) break
+	0)
+	tput rmcup
+	echo "Program Terminated"
+	break
 	;;
 	*) echo "Invalid"
 	;;
 esac
 done
-
-tput rmcup
-echo "Program Terminated"
-	

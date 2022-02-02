@@ -1,0 +1,136 @@
+#!/bin/bash
+clear
+echo "You observe the trees for anything that could be useful."
+sleep 4
+tput bold; echo -n "LaCo: "; tput sgr0; echo "This might be a good place to look for food."
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Climb Trees
+	2. Search Low Branches
+	3. Check Holes in Trees
+	0. Done
+EOF
+read -p "" selection
+	case $selection in
+	1) echo "You climb a nearby tree. Nothing seems to grow up here."
+	 sleep 4;
+	;;
+	2) echo "You search the low hanging branches. There appears to be some kind of fruit."
+	sleep 4;
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "Nice job finding food! This should get you through the day! Use the cat command on me to see how to eat it!"
+	sleep 3;
+	if [[ -f .+fruit ]]
+		then
+		echo "
+You found food! Nice job. You'll need to eat food at least once a day to survive.
+	
+**NEW COMMAND:
+eat
+	--> used to eat food (add food to your inventory first)
+		ex. eat +fruit
+" >> LaCo
+echo "
+eat <filename>
+	--> this function is used to eat food from your inventory
+		ex. eat +fruit" >> "$FILELOCATION/CORE/scripts/commandList" 
+	fi
+	mv .+fruit \+fruit
+	;;
+	3) echo "You search inside the large holes of the tree trunks."
+	sleep 3
+	echo "You find an ancient Axe."
+	if [[ -f .+axe ]]
+		then
+		mv .+axe \+axe
+	fi
+	;;
+	0)
+	break
+	;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~trees is a script, use the source command to interact with it: . ~trees
+# use the function "LaCo" to view your commands if you need help
+	

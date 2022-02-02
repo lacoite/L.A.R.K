@@ -1,0 +1,95 @@
+#!/bin/bash
+clear
+echo "There's a strange, weathered rock unlike any others near the roots of a tree. Upon a closer look, you realize that it was a grave, and a holo-scroll has been tucked under a nearby root."
+sleep 5
+if [[ -f .+scrollThree ]]
+then
+	mv .+scrollThree \+scrollThree
+	echo "
+You found a holo-scroll! These are a form of technology used to document important messages. There may be more in other locations." >> LaCo
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~rock is a script, use the source command to interact with it: . ~rock
+# use the function "LaCo" to view your commands if you need help
+
+

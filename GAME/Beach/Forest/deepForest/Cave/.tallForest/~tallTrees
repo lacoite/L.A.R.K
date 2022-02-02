@@ -1,0 +1,129 @@
+#!/bin/bash
+clear
+echo "The trees in this forest are unusually tall. Their leaves seem to block out the sun, making it difficult to see."
+sleep 5
+tput bold; echo -n "LaCo: "; tput sgr0; echo "It could be dangerous to wander this forest."
+sleep 5
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Keep Walking
+	2. Climb Tree
+	3. Look For Path
+	0. Done
+EOF
+read -p "" selection
+	case $selection in
+	1) echo "You continue wandering in the forest. The sun's ray seem to become more and more dim the deeper you go."
+	sleep 4;
+	echo "You realize that you are lost as the world around you in enveloped in the shade of the trees' dense leaves. You can't get a signal from LaCo."
+	sleep 7;
+	echo "You begin to panic and start running. Not long after, you see light through the trees."
+	sleep 5
+	echo "You tumble through the edge of the forest over the edge of a cliff. Maybe this was a bad idea..."
+	sleep 4;
+	echo " You died."
+	sleep 4
+	gameDeath
+	;;
+	2) echo "You climb to the top of a neaby tree. From this high up, you can see several hundred feet in either direction."
+	sleep 7
+	echo "You notice that in one direction, the forest ends and the edge of a tall cliff can be seen."
+	sleep 7
+	echo "In the other direction an odd, advanced-looking building can be see."
+	sleep 4
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "The edge of that cliff might be high enough to send that signal."
+	sleep 3;
+	if [[ -d .topOfCliff ]]
+		then
+		mv .topOfCliff topOfCliff
+		mv .researchCenter researchCenter
+	fi
+	;;
+	3) echo "You search the ground for any signs of an old pathway."
+	sleep 4
+	echo "No path is found, but you do find a familiar, tasteless but edible plant."
+	if [[ -f .+plant ]]
+		then
+		mv .+plant \+plant
+	fi
+	;;
+	0)
+	break
+	;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~tallTrees is a script, use the source command to interact with it: . ~tallTrees
+# use the function "LaCo" to view your commands if you need help
+	

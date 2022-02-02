@@ -1,0 +1,8 @@
+#!/bin/bashi
+if [[ "$Day" -eq 5 ]]
+then
+	. winGame
+else
+	tput bold; echo -n "LaCo: "; tput sgr0; echo "The rescue team won't arrive until day 5! Use the rest function to skip to the next day, but be sure to maintain your hunger!"
+	sleep 7;
+fi

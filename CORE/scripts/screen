@@ -1,0 +1,8 @@
+#!/bin/bash
+while [ "$(tput cols)" -lt 200 ]
+do
+ echo "Please increase the size of your window to at least 200 columns for images and text to correctly display."
+ echo "Current size: " $(tput cols)
+ sleep 5
+done
+echo "Screen Size Sufficient, Thank You!"

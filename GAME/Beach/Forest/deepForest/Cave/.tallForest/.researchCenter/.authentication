@@ -1,0 +1,24 @@
+#!/bin/bash
+# LaCo: I was able to load myself into this script, but I can't make any changes myself. Anything I say will be preceded by a "#" and will appear as a comment. I'll guide you through what you need to do!
+# To edit this script, hit "i" on your keyboard this will enter insert mode, allowing you to type (the status line at the bottom of the screen will say -- INSERT -- when this is done correctly. Use the arrow keys to navigate the editor. Be careful not to delete anything!
+
+
+
+
+# It looks like the quotation marks eroded from this script. Let's add them back, then change the required ID from §§§§ to your private number, 0721.
+read -. Enter ID:  ID
+# wrap 'Enter ID: ' in double quotes. This is the text that will prompt you to enter a string. Change the period after the - to a p to make the shell prompt you for a string
+if [[ $ID -eq §§§§ ]]
+# wrap '$ID' in double quotes. This is the variable used to store your response, so the shell needs to read its contents.
+then
+	USERX=Authorized
+	# wrap 'Authorized' in double quotes. This is a string being assigned to the variable USERX.
+else
+	USER=Unauthorized
+	# change USER to USERX to keep the variables consistent, then wrap 'Unauthorized' in double quotes. This is a string being assigned to the variable USERX.
+fi
+
+
+
+
+# When you're all done here, hit ESC followed by :wq! and then ENTER to exit and save your changes. Watch the Status Line at the bottom of the screen for what you are typing. If you want to start over, type :q! after ESC instead to exit without saving. Or hit ESC then u to undo your changes.

@@ -1,0 +1,110 @@
+#!/bin/bash
+clear
+echo "You find yourself in what resembles a military base. There are huts overgrown with plant life surrounding a circular area of paved concrete."
+sleep 7;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "This must be the evacuation zone. The concrete could be a good spot to launch a flare."
+sleep 5;
+echo "You claw through the mess of plants and tree limbs encasing one of the stations."
+sleep 5;
+echo "Inside are more lumps of decomposed material and a holo scroll."
+sleep 4;
+if [[ -f .+scrollFour ]]
+then
+	mv .+scrollFour \+scrollFour
+	mv .~flare ~flare
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~station is a script, use the source command to interact with it: . ~station
+# use the function "LaCo" to view your commands if you need help
+	

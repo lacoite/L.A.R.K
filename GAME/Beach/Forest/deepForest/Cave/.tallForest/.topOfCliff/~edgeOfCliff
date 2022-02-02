@@ -1,0 +1,156 @@
+#!/bin/bash
+clear
+STRING1="defense system"
+STRING2="flare"
+if [[ "$playerWin" = "unlocked" ]]
+then
+	echo "The signal was received! Head to the evacuation zone to wait for the rescue team!"
+	sleep 5
+	clear
+else
+echo "You carefully climb up to the edge of the steep cliff. From here you can see the beach you crashed on and the wreckage of your ship. This looks high enough to send the signal."
+sleep 7
+if [[ -f $inventory/RTWarning ]]
+then
+	if grep -q "$STRING1" "$inventory/RTWarning"
+	then
+		if grep -q "$STRING2" "$inventory/RTWarning"
+		then
+			if [[ "$flareSent" = "yes" ]]
+			then
+				if [[ -f $inventory/+myDevice ]]
+				then
+					tput bold; echo -n "LaCo: "; tput sgr0; echo "I can fast stream the warning message from here. One moment..."
+					sleep 4
+					echo ""
+					sleep 2
+					echo ""
+					sleep 2
+				        tput bold; echo -n "LaCo: "; tput sgr0; echo "The signal was received! Wwe should head to the evacuation zone to wait to get picked up!"
+					sleep 6
+					if [[ -f $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/evacuationZone/.~RESCUE ]]
+					then	
+						playerWin="unlocked"
+						mv  $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/evacuationZone/.~RESCUE  $FILELOCATION/GAME/Beach/Forest/footOfCliff/Trail/evacuationZone/~RESCUE
+					fi
+					clear
+				else
+					tput bold; echo -n "LaCo: "; tupt sgr0; echo "I have to connect to your myDevice to send the signal. It should be at the crash site."
+					sleep 6
+					clear
+				fi
+			else
+				tput bold; echo -n "LaCo: "; tput sgr0; echo "We should launch the flare at the evacuation zone before we send the warning."
+				sleep 6;
+				clear;
+			fi
+		else
+		        tput bold; echo -n "LaCo: "; tput sgr0; echo "We should let the rescue team know about the flare. Append the information to the file using \"echo \"The flare marks the landing site\" >> \$inventory/RTWarning."
+			sleep 15;
+		fi
+	else
+	        tput bold; echo -n "LaCo: "; tput sgr0; echo "We have to let the rescue team know about the defense system. Append the information to the file using \"echo \"The planet's defense system is still active.\" >> \$inventory/RTWarning."
+		sleep 15
+	fi
+else
+        tput bold; echo -n "LaCo: "; tput sgr0; echo "I can fast stream a warning message from here, but you'll need to write one first. Head back to the research center, there should be a guide there."
+	sleep 10;
+	clear;
+fi
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~edgeOfCliff is a script, use the source command to interact with it: . ~edgeOfCliff
+# use the function "LaCo" to view your commands if you need help
+	

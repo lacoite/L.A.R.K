@@ -1,0 +1,135 @@
+#!/bin/bash
+clear
+echo "You navigate your way through the forest, climbing and crawling through the twisted trunks and branches. Eventually you come across mushrooms torn up from the ground and tracks from some sort of animal."
+sleep 10;
+tput bold; echo -n "LaCo: "; tput sgr0; echo "These should be safe to eat, but there might be some kind of predator nearby."
+sleep 5;
+while [[ $REPLY != 0 ]]; do
+cat <<EOF
+	1. Collect Mushrooms
+	2. Follow Tracks
+	3. Continue Forward
+	0. Done
+EOF
+read -p "" selection
+	case $selection in
+	1) echo "You collect the mushrooms. (They have been added to your inventory)."
+	 sleep 4;
+	if [[ -f .+mushrooms ]]
+	then
+		mv .+mushrooms \+mushrooms
+		mv \+mushrooms $inventory
+	fi
+	;;
+	2)
+	if [[ "$killedLizard" = "yes" ]]
+	then
+		echo "There may still be predators nearby. It might not be a good idea to stay here."
+	sleep 5;
+	elif [[ -f $FILELOCATION/CORE/inventory/+axe ]] && [[ "$killedLizard" = "no" ]]
+	then
+		echo "You follow the tracks. You hear a low growl coming from under a web of roots."
+		sleep 4;
+		rm $inventory/+axe
+		echo "A dog-sized lizard-like creature leaps from the shadows, knocking you to the ground. Before it can snap your head in its unhinged, jagged teeth filled jaws, you hack into it with the ancient axe."
+	sleep 7;
+		echo "You manage to shove the animal off of you and continue your attack until it no longer moves. Your axe is broken."
+	sleep 5;
+		tput bold; echo -n "LaCo: "; tput sgr0; echo "That was close. Good thing you had that axe. Your heartrate is elevated, but I'm not detecting any injuries. We should keep moving."
+		killedLizard="yes"
+	else
+		echo "You follow the tracks. You hear a low growl coming from under a web of roots."
+		sleep 4;
+		echo "A dog-sized lizard-like creature leaps from the shadows, knocking you to the ground. In a panic, you unleash a barrage of punches on the animal. It unhinges its jagged teeth filled jaws and snaps your head into its mouth."
+	sleep 8
+	clear
+		echo "	You Died."
+	sleep 3
+	gameDeath
+	fi
+	;;
+	3) echo "You continue through the trees. As the forest density decreases, you can see what appears to be a city."
+	sleep 7
+	if [[ -d .overGrownCity ]]
+		then
+		mv .overGrownCity overGrownCity
+	fi
+	;;
+	0)
+	break
+	;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ~trees is a script, use the source command to interact with it: . ~trees
+# use the function "LaCo" to view your commands if you need help
+	

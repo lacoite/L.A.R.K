@@ -1,0 +1,10 @@
+#!/bin/bash
+# LaCo: I was able to load myself into this script, but I can't make any changes myself. Anything I say will be preceded by a "#" and will appear as a comment. I'll guide you through what you need to do!
+# To edit this script, hit "SHIFT+R" on your keyboard this will enter REPLACE  mode, allowing you to replace characters. Use the arrow keys to navigate the editor. Be careful not to delete anything!
+
+# There are currently no locations added to the INACTIVE_DEFENSE variable. Move your cursor to the first _ character, enter REPLACE mode, then add evacuationZone to the space.
+INACTIVE_DEFENSE="______________"
+
+
+
+# When you're all done here, hit ESC followed by :wq! and then ENTER to exit and save your changes. Watch the Status Line at the bottom of the screen for what you are typing. If you want to start over, type :q! after ESC instead to exit without saving. Or hit ESC then u to undo your changes.

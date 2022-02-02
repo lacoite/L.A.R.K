@@ -1,0 +1,30 @@
+╔══════╗
+║█    █║
+║  └┘  ║
+╚══════╝: This is where you can find information related to each location. Any time I have instructions or a new command to help you, you'll see my name appear when you use the ls command.
+You can also use my function by typing my name "LaCo" in the command line. You'll see an updated list of all of the commands you have discovered as well as how to use them. You can also read hints with my function as well (mild spoilers).
+
+Notice when you typed ls that there were three different colored words. The blue words are directories (locations), and you can move to them by using the cd command.
+Anything that you can read or look at are called files and will be the default color of your text. Use the cat command as you did with my name to view them. Try the cat command on the "Debris".
+
+When you're done, move to the crash site with the cd command.
+
+
+NOTE: If you do not have a command to continue in a direction try using the cat command on me again (sometimes I will update after you interact with something). If that doesn't help, you likely haven't unlocked the command it yet! Try exploring other areas first!
+
+
+***NEW COMMANDS:
+================
+ls
+        --> used to display files, scripts, and directories to "look around"
+cd <pathname>
+        --> used to move to a new directory or "location"
+                ex. cd crashSite
+		*****Type "BACK" if you cd beyond the map into game files or outside  of the game****
+cat <filename>
+        --> used to display content of a file
+                ex. cat LaCo
+LaCo
+	--> this function can be used to view a list of all unlocked commands
+
+
